@@ -11,6 +11,10 @@ export class TaskService {
   findAll() {
     return `This action returns all task`;
   }
+  // getAllTasks() - my func
+  getAllTasks() {
+    return `This action returns all task`;
+  }
 
   findOne(id: number) {
     return `This action returns a #${id} task`;
