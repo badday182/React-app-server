@@ -1,5 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
 
+export enum TaskPriority {
+  LOW = 'Low',
+  MEDIUM = 'Medium',
+  HIGH = 'High',
+}
+
 @Entity()
 export class Task extends BaseEntity {
   @PrimaryGeneratedColumn()
@@ -14,6 +20,6 @@ export class Task extends BaseEntity {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   dueDate: Date;
 
-  @Column({ default: 0 })
-  priority: number;
+  @Column({ type: 'enum', enum: TaskPriority, default: TaskPriority.LOW })
+  priority: TaskPriority;
 }

@@ -24,10 +24,10 @@ export class TaskController {
     return this.taskService.createTask(createTaskDto);
   }
 
-  @Put(':id')
-  updateTask(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto): Promise<Task> {
-    return this.taskService.updateTask(+id, updateTaskDto);
-  }
+  // @Put(':id')
+  // updateTask(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto): Promise<Task> {
+  //   return this.taskService.updateTask(+id, updateTaskDto);
+  // }
 
   @Delete(':id')
   deleteTask(@Param('id') id: string): Promise<void> {
