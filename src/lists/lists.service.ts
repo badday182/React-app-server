@@ -28,7 +28,8 @@ export class ListsService {
     return `This action updates a #${id} list`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} list`;
+  async deleteList(id: number): Promise<void> {
+    await this.listRepository.delete(id);
   }
 }
+

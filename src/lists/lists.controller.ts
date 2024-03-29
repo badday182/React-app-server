@@ -29,7 +29,8 @@ export class ListsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.listsService.remove(+id);
+  async deleteList(@Param('id') id: string) {
+    await this.listsService.deleteList(+id);
+    return { message: 'List deleted successfully' };
   }
 }
