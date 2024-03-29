@@ -16,8 +16,8 @@ export class ListsService {
     return this.listRepository.save(list);
   }
 
-  findAll() {
-    return `This action returns all lists`;
+  async getAllLists(): Promise<List[]> {
+    return this.listRepository.find();
   }
 
   findOne(id: number) {

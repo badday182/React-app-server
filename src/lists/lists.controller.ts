@@ -9,8 +9,8 @@ export class ListsController {
   constructor(private readonly listsService: ListsService) {}
 
   @Get()
-  findAll() {
-    return this.listsService.findAll();
+  getAllLists(): Promise<List[]> {
+    return this.listsService.getAllLists();
   }
   @Post()
   createList(@Body() createListDto: CreateListDto) {
