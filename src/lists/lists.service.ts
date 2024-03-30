@@ -24,8 +24,14 @@ export class ListsService {
     return `This action returns a #${id} list`;
   }
 
-  update(id: number, updateListDto: UpdateListDto) {
-    return `This action updates a #${id} list`;
+  async updateList(id: number, updateListDto: UpdateListDto) {
+    const task = await this.listRepository.findOne({ where: { id } });
+    if (!task) {
+      throw new Error('Task not found');
+    }
+
+    this.listRepository.merge(task, updateListDto);
+    return this.listRepository.save(task);
   }
 
   async deleteList(id: number): Promise<void> {
