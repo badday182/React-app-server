@@ -24,13 +24,27 @@ export class ListsService {
     return `This action returns a #${id} list`;
   }
 
+  // async updateList(id: number, updateListDto: UpdateListDto) {
+  //   const task = await this.listRepository.findOne({ where: { id } });
+  //   if (!task) {
+  //     throw new Error('Task not found');
+  //   }
+
+  //   this.listRepository.merge(task, updateListDto);
+  //   return this.listRepository.save(task);
+  // }
   async updateList(id: number, updateListDto: UpdateListDto) {
     const task = await this.listRepository.findOne({ where: { id } });
     if (!task) {
       throw new Error('Task not found');
     }
-
-    this.listRepository.merge(task, updateListDto);
+  
+    if (updateListDto.title !== undefined) {
+      task.title = updateListDto.title;
+    }
+  
+    // Другие проверки и обновления для других полей, если необходимо
+  
     return this.listRepository.save(task);
   }
 
