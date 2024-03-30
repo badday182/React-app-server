@@ -13,13 +13,16 @@ export class Task extends BaseEntity {
 
   @Column()
   name: string;
-
+  
   @Column()
   description: string;
-
+  
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   dueDate: Date;
-
+  
   @Column({ type: 'enum', enum: TaskPriority, default: TaskPriority.LOW })
   priority: TaskPriority;
+  
+  @Column()
+  listId: number;
 }

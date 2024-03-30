@@ -1,10 +1,5 @@
-// export class CreateTaskDto {
-//   readonly name: string;
-//   readonly description: string;
-//   readonly dueDate: Date;
-//   readonly priority: number;
-// }
-import { IsNotEmpty, IsString, IsEnum } from 'class-validator';
+
+import { IsNotEmpty, IsString, IsEnum, IsNumber } from 'class-validator';
 import { TaskPriority } from '../entities/task.entity'; 
 
 export class CreateTaskDto {
@@ -12,10 +7,14 @@ export class CreateTaskDto {
   @IsString()
   name: string;
 
-  @IsNotEmpty()
+  
   @IsString()
   description: string;
-
+  
   @IsEnum(TaskPriority)
   priority: TaskPriority;
+
+  @IsNotEmpty()
+  @IsNumber()
+  listId: number;
 }

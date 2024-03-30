@@ -7,4 +7,6 @@ export class UpdateTaskDto extends PartialType(CreateTaskDto) {
   readonly description?: string;
   readonly dueDate?: Date;
   readonly priority?: TaskPriority;
+  readonly listId?: number;
+  
 }
