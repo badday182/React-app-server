@@ -4,7 +4,7 @@ import { FindOneOptions, Repository } from 'typeorm';
 import { Task } from './entities/task.entity';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
-import { log } from 'console';
+
 
 @Injectable()
 export class TaskService {
@@ -26,15 +26,15 @@ export class TaskService {
     const options: FindOneOptions<Task> = { where: { id } };
     return this.taskRepository.findOne(options);
   }
-  // async updateTask(id: number, updateTaskDto: UpdateTaskDto): Promise<Task> {
-  //   const task = await this.taskRepository.findOne({ where: { id } });
-  //   if (!task) {
-  //     throw new Error('Task not found');
-  //   }
+  async updateTask(id: number, updateTaskDto: UpdateTaskDto): Promise<Task> {
+    const task = await this.taskRepository.findOne({ where: { id } });
+    if (!task) {
+      throw new Error('Task not found');
+    }
 
-  //   this.taskRepository.merge(task, updateTaskDto);
-  //   return this.taskRepository.save(task);
-  // }
+    this.taskRepository.merge(task, updateTaskDto);
+    return this.taskRepository.save(task);
+  }
 
   async deleteTask(id: number): Promise<void> {
     await this.taskRepository.delete(id);
